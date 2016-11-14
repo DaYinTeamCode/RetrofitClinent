@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#555555</color>
+    <color name="colorPrimaryDark">#555555</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--登录-->
+    <color name="background">#ffffff</color>
+    <color name="devide">#e3e3e3</color>
+    <color name="thirdPartyLogin">#929292</color>
+    <color name="app_title">#555555</color>
+    <color name="addaddressPlease">#999999</color>
+    <color name="white">#fdfdfd</color>
+    <color name="hint">#cccccc</color>
+    <color name="btn_ok_pressed">#ff4248</color>
+    <color name="btn_ok_unpressed">#99ff4248</color>
+    <color name="ingestAcount">#343434</color>
+</resources>

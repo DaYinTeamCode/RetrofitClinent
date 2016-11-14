@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--登录页面布局-->
+<com.zhy.autolayout.AutoRelativeLayout
+    android:id="@+id/activity_login"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context="com.goyin.mvp.view.login.LoginActivity"
+   >
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/three_line"
+                android:layout_marginLeft="34px"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="第三方登录"
+                android:textColor="@color/thirdPartyLogin"
+                android:textSize="26px"/>
+
+            <ImageView
+                style="@style/three_line"
+                android:layout_marginRight="34px"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80px"
+            android:layout_marginTop="80px"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/qq"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/qq"/>
+
+            <ImageView
+                android:id="@+id/wb"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/wb"/>
+
+            <ImageView
+                android:id="@+id/wx"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/wx"/>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <include layout="@layout/titile_bar"/>
+
+        <EditText
+            android:id="@+id/et_loginTel"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="120px"
+            android:background="@color/white"
+            android:drawableLeft="@mipmap/account"
+            android:drawablePadding="30px"
+            android:hint="@string/telHint"
+            android:textSize="26px"
+            android:inputType="number"
+            android:textColorHint="@color/hint"
+            android:maxLength="11"/>
+
+        <include layout="@layout/divide"/>
+
+        <EditText
+            android:id="@+id/et_loginPwd"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:background="@color/white"
+            android:drawableLeft="@mipmap/pwd"
+            android:drawablePadding="30px"
+            android:textColorHint="@color/hint"
+            android:hint="@string/pwdHint"
+            android:textSize="26px"
+            android:inputType="textPassword"/>
+
+
+        <include layout="@layout/divide"/>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="80px"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="40px"
+            android:background="@drawable/btn_ok"
+            android:text="@string/login"
+            android:textColor="@color/background"
+            android:textSize="30px"/>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40px"
+            android:layout_marginRight="40px"
+            android:layout_marginTop="30px">
+
+            <TextView
+                android:id="@+id/tv_regist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/ingestAcount"
+                android:textColor="@color/ingestAcount"
+                android:textSize="26px"/>
+
+            <TextView
+                android:id="@+id/tv_forgetPwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:clickable="true"
+                android:text="@string/forgetPwd"
+                android:textColor="@color/ingestAcount"
+                android:textSize="26px"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

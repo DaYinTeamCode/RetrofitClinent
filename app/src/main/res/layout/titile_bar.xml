@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="88px"
+    android:background="@color/background"
+    >
+
+    <ImageView
+        android:id="@+id/img_signed"
+        android:layout_width="wrap_content"
+        android:layout_height="30px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20px"
+        android:clickable="true"
+        android:src="@mipmap/title_back"
+        />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/app_title"
+        android:textSize="36px"
+        />
+
+    <TextView
+        android:id="@+id/tv_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="完成"
+        android:textColor="@color/addaddressPlease"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20px"
+        android:clickable="false"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/img_msg"
+        android:layout_width="46px"
+        android:layout_height="46px"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20px"
+        android:clickable="true"
+        android:src="@mipmap/icon_message"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
