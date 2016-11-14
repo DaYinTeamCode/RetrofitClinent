@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.gaoyin.mvp.R;
 import com.goyin.mvp.base.BaseFragment;
+import com.goyin.mvp.presenter.home.interfaces.HomeContract;
 
 /**
  *  作者：gaoyin
@@ -30,9 +31,8 @@ public class HomeFragment extends BaseFragment{
     protected void onEvent() {
 
     }
-
     @Override
     protected Class getContractClazz() {
-        return null;
+        return HomeContract.class;
     }
 }

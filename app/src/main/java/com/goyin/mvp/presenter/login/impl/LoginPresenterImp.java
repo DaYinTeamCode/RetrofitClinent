@@ -6,6 +6,7 @@ import android.os.Message;
 import com.goyin.mvp.base.BasePresenter;
 import com.goyin.mvp.base.BaseView;
 import com.goyin.mvp.presenter.login.interfaces.LoginContract;
+import com.goyin.mvp.view.common.activity.MainActivity;
 import com.goyin.mvp.view.login.LoginActivity;
 
 import static android.R.attr.bitmap;
@@ -35,6 +36,7 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
                 case LOGIN_SUCCUSS:
                     mView.dismiss();
                     mView.showSuccessWithStatus("登录成功");
+                    mView.startAct(MainActivity.class,true);
                     break;
                 case LOGIN_FAIL:
                     mView.dismiss();

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.gaoyin.mvp.R;
 import com.goyin.mvp.base.BaseActivity;
+import com.goyin.mvp.presenter.home.interfaces.HomeContract;
 import com.goyin.mvp.view.common.fragment.HomeFragment;
 
 
@@ -19,8 +20,9 @@ public class MainActivity extends BaseActivity {
     protected void onInitView(Bundle bundle) {
         FragmentManager manmager = getSupportFragmentManager();
         FragmentTransaction transaction = manmager.beginTransaction();
-        HomeFragment fragment=new HomeFragment();
-        transaction.replace(R.id.main_content,fragment);
+        transaction.replace(R.id.main_content,new HomeFragment());
+        transaction.commit();
+
 
     }
     @Override
@@ -30,7 +32,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected Class getContractClazz() {
-        return null;
+        return HomeContract.class;
     }
 
 

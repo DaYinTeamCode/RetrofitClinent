@@ -50,6 +50,10 @@ public interface LoginContract {
          *
          */
         void dismiss();
+        /**
+         * 页面跳转
+         */
+        void startAct(Class<?> cls, boolean finish);
 
     }
     /**
@@ -74,6 +78,7 @@ public interface LoginContract {
          *  忘记密码
          */
         void forgetPwd();
+
 
     }
 

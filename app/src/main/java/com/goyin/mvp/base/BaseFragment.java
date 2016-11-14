@@ -12,8 +12,6 @@ import com.goyin.mvp.model.ContractProxy;
 
 import butterknife.ButterKnife;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-
 /**
  *  作者：gaoyin
  *  电话：18810474975
@@ -103,7 +101,5 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         }
 
     }
-
-
 
 }

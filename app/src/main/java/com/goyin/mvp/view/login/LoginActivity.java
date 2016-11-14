@@ -1,6 +1,7 @@
 package com.goyin.mvp.view.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.gaoyin.mvp.R;
 import com.goyin.mvp.base.BaseActivity;
+import com.goyin.mvp.base.SwipeBackActivity;
 import com.goyin.mvp.model.annotation.Implement;
 import com.goyin.mvp.presenter.login.impl.LoginPresenterImp;
 import com.goyin.mvp.presenter.login.interfaces.LoginContract;
@@ -134,5 +136,14 @@ public class LoginActivity extends BaseActivity<LoginPresenterImp> implements Lo
     public void dismiss() {
         svProgressHUD.dismiss();
 
+    }
+    @Override
+    public void startAct(Class<?> cls, boolean finish) {
+        Intent intent = new Intent(context, cls);
+        startActivity(intent);
+        if(finish)
+        {
+            finish();
+        }
     }
 }

@@ -1,5 +1,8 @@
 package com.goyin.mvp.presenter.home.interfaces;
 
+import com.goyin.mvp.model.annotation.Implement;
+import com.goyin.mvp.presenter.home.impl.HomePresenterImp;
+
 /**
  *  作者：gaoyin
  *  电话：18810474975
@@ -9,6 +12,7 @@ package com.goyin.mvp.presenter.home.interfaces;
  *  备注消息：
  *  修改时间：2016/11/14 下午3:29
  **/
+@Implement(HomePresenterImp.class)
 public interface HomeContract {
 
       interface View{

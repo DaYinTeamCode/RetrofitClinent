@@ -8,11 +8,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
 
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 public abstract class SwipeBackActivity extends BaseActivity {
+
+
     public SwipeBackLayout mSwipeBackLayout;
 
     @Override
