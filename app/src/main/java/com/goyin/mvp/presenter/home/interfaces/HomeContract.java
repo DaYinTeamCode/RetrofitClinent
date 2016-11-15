@@ -1,5 +1,7 @@
 package com.goyin.mvp.presenter.home.interfaces;
 
+import com.goyin.mvp.base.CommonPresenter;
+import com.goyin.mvp.base.CommonView;
 import com.goyin.mvp.model.annotation.Implement;
 import com.goyin.mvp.presenter.home.impl.HomePresenterImp;
 
@@ -15,37 +17,11 @@ import com.goyin.mvp.presenter.home.impl.HomePresenterImp;
 @Implement(HomePresenterImp.class)
 public interface HomeContract {
 
-      interface View{
-            /**
-             *  提示成功信息
-             * @param msg
-             */
-            void showSuccessWithStatus(String msg);
+      interface View extends CommonView{
 
-            /**
-             *  提示错误信息
-             * @param msg
-             */
-            void showErrorWithStatus(String msg);
-
-            /**
-             *  提示消息
-             * @param msg
-             */
-            void showsInfoWithStatus(String msg);
-            /**
-             *  进度框
-             * @param msg
-             */
-            void showWithProgress(String msg);
-
-            /**
-             *
-             */
-            void dismiss();
 
       }
-      interface Presenter{
+      interface Presenter extends CommonPresenter{
 
           /**
            *  提示消息
