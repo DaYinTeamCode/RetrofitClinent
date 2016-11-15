@@ -4,9 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
   >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+<Button
+    android:id="@+id/btn_home"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:background="@drawable/btn_ok"
+    android:text="首页"
+    android:textColor="@color/background"
+    android:textSize="30px"
+    />
 </RelativeLayout>

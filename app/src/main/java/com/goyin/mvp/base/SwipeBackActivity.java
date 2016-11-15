@@ -6,17 +6,39 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.goyin.mvp.model.ContractProxy;
+
 import java.util.List;
 
+import butterknife.ButterKnife;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
-public abstract class SwipeBackActivity extends BaseActivity {
+public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCompatActivity implements BaseView<T> {
 
 
     public SwipeBackLayout mSwipeBackLayout;
+
+    //    定义Presenter
+    protected  T mPresenter;
+
+    //    获取布局资源文件
+    protected  abstract  int getLayoutId();
+
+//    初始化数据
+
+    protected  abstract void onInitView(Bundle bundle);
+
+//    初始化事件Event
+
+    protected  abstract  void onEvent();
+
+    //    获得抽取接口Class对象
+    protected  abstract  Class getContractClazz();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +48,53 @@ public abstract class SwipeBackActivity extends BaseActivity {
             processSaveInstanceState(savedInstanceState);
         }
         onActivityCreate();
+        if(getLayoutId()!=0)
+        {
+//            设置布局资源文件
+            setContentView(getLayoutId());
+//            注解绑定
+            ButterKnife.bind(this);
+            bindPresenter();
+            onInitView(savedInstanceState);
+            onEvent();
+        }
+    }
+    private  void bindPresenter()
+    {
+        if(getContractClazz()!=null)
+        {
+            mPresenter=getPresenterImpl();
+        }
+    }
+
+    private <T> T getPresenterImpl()
+    {
+
+        return ContractProxy.getInstance().bind(getContractClazz(),this);
+    }
+
+    @Override
+    protected void onStart() {
+
+        if(mPresenter!=null&&!mPresenter.isViewBind())
+        {
+            ContractProxy.getInstance().bind(getContractClazz(),this);
+        }
+        super.onStart();
+    }
+
+    /**
+     *  activity摧毁
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+        if(mPresenter!=null)
+        {
+            ContractProxy.getInstance().unbind(getContractClazz(),this);
+            mPresenter.detachView();
+        }
     }
 
     protected void processSaveInstanceState(Bundle savedInstanceState) {

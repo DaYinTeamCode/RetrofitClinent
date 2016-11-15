@@ -16,7 +16,8 @@ import com.goyin.mvp.view.common.fragment.HomeFragment;
  **/
 public class HomePresenterImp extends BasePresenter<HomeFragment> implements HomeContract.Presenter {
 
-
-
-
+    @Override
+    public void message(String msg) {
+        mView.showSuccessWithStatus(msg);
+    }
 }

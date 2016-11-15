@@ -32,7 +32,7 @@ import butterknife.OnClick;
  * 修改时间：2016/11/8 下午4:07
  **/
 
-public class LoginActivity extends BaseActivity<LoginPresenterImp> implements LoginContract.View {
+public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implements LoginContract.View {
 
     public Context context;
     @Bind(R.id.qq)

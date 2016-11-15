@@ -34,13 +34,17 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
             switch (msg.what)
             {
                 case LOGIN_SUCCUSS:
-                    mView.dismiss();
-                    mView.showSuccessWithStatus("登录成功");
-                    mView.startAct(MainActivity.class,true);
+                    if(mView!=null) {
+                        mView.dismiss();
+                        mView.showSuccessWithStatus("登录成功");
+                        mView.startAct(MainActivity.class, true);
+                    }
                     break;
                 case LOGIN_FAIL:
-                    mView.dismiss();
-                    mView.showErrorWithStatus("登录失败!");
+                    if(mView!=null) {
+                        mView.dismiss();
+                        mView.showErrorWithStatus("登录失败!");
+                    }
                     break;
             }
         }

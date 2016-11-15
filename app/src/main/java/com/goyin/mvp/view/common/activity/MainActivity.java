@@ -23,7 +23,6 @@ public class MainActivity extends BaseActivity {
         transaction.replace(R.id.main_content,new HomeFragment());
         transaction.commit();
 
-
     }
     @Override
     protected void onEvent() {
