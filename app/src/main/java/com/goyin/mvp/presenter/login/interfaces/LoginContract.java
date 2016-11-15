@@ -33,7 +33,7 @@ public interface LoginContract {
 
     }
     /**
-     *   presenter:
+     *   presenter
      *
      */
    interface Presenter extends CommonPresenter{
