@@ -95,14 +95,9 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
                     message.what=LOGIN_FAIL;
                     mHandler.sendMessage(message);
                 }
-
-
             }
         }).start();
-
-
     }
-
     @Override
     public void regist() {
        mView.showSuccessWithStatus("注册成功");
