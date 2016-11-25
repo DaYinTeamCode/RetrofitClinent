@@ -50,7 +50,7 @@ public class ExceptionHandle {
                 case BAD_GATEWAY:
                 case SERVICE_UNAVAILABLE:
                 default:
-                    ex.message = "网络异常";
+                    ex.message = "无网络,请重试!";
                     break;
             }
             return ex;

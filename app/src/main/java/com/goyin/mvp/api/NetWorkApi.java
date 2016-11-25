@@ -16,4 +16,7 @@ public class NetWorkApi {
 
 //     分类列表
      public  static final   String  getColumnDetail= "/api/v1/getColumnDetail";
+
+    //     全部直播
+    public  static final   String  getAllLive= "/api/v1/live";
 }

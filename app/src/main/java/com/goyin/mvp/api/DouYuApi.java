@@ -1,6 +1,7 @@
 package com.goyin.mvp.api;
 
 import com.goyin.mvp.model.home.ColumnDetail;
+import com.goyin.mvp.model.live.LiveList;
 import com.zhuoke.team.net.response.HttpResponse;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface DouYuApi {
 
     @GET(NetWorkApi.getColumnDetail)
     Observable<HttpResponse<List<ColumnDetail>>> getColumnDetail(@QueryMap Map<String, String> maps);
+
+    @GET(NetWorkApi.getAllLive)
+    Observable<HttpResponse<List<LiveList>>> getAllLive(@QueryMap Map<String, String> maps);
 }

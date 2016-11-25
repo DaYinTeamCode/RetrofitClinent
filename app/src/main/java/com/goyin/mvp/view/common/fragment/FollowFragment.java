@@ -6,8 +6,6 @@ import android.widget.Button;
 import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.gaoyin.mvp.R;
 import com.goyin.mvp.base.BaseFragment;
-import com.goyin.mvp.presenter.home.impl.HomePresenterImp;
-import com.goyin.mvp.presenter.home.interfaces.HomeContract;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -21,7 +19,7 @@ import butterknife.OnClick;
  * 备注消息：
  * 修改时间：2016/11/14 上午11:50
  **/
-public class FollowFragment extends BaseFragment<HomePresenterImp> implements HomeContract.View{
+public class FollowFragment extends BaseFragment {
     @BindView(R.id.btn_home)
     Button btnHome;
     SVProgressHUD svProgressHUD;
@@ -42,37 +40,13 @@ public class FollowFragment extends BaseFragment<HomePresenterImp> implements Ho
     }
     @Override
     protected Class getContractClazz() {
-        return HomeContract.class;
+        return null;
     }
 
     @OnClick(R.id.btn_home)
     public void home()
     {
 
-
-    }
-    @Override
-    public void showSuccessWithStatus(String msg) {
-        svProgressHUD.showSuccessWithStatus(msg);
-    }
-
-    @Override
-    public void showErrorWithStatus(String msg) {
-
-    }
-
-    @Override
-    public void showsInfoWithStatus(String msg) {
-
-    }
-
-    @Override
-    public void showWithProgress(String msg) {
-
-    }
-
-    @Override
-    public void dismiss() {
 
     }
 }

@@ -4,6 +4,8 @@ import com.zhuoke.team.utils.BaseParamsMapUtil;
 
 import java.util.Map;
 
+import static android.R.attr.name;
+
 /**
  * 作者：${User}
  * 电话：18810474975
@@ -26,7 +28,7 @@ public class ParamsMapUtils  extends BaseParamsMapUtil{
     }
 
     /**
-     *
+     *   名称获取分类
      * @param name
      * @return
      */
@@ -35,4 +37,19 @@ public class ParamsMapUtils  extends BaseParamsMapUtil{
         mapparam.put("shortName", name);
         return mapparam;
     }
+
+
+    /**
+     *   全部直播
+     * @param offset
+     * @param limit
+     * @return
+     */
+    public static Map<String, String> getAlllLive(String offset,String limit) {
+        mapparam = getDefaultParams();
+        mapparam.put("offset", offset);
+        mapparam.put("limit", limit);
+        return mapparam;
+    }
+
 }
