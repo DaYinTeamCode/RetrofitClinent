@@ -1,9 +1,6 @@
 package com.goyin.mvp.view.common.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.bigkoo.svprogresshud.SVProgressHUD;
@@ -12,8 +9,8 @@ import com.goyin.mvp.base.BaseFragment;
 import com.goyin.mvp.presenter.home.impl.HomePresenterImp;
 import com.goyin.mvp.presenter.home.interfaces.HomeContract;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -26,7 +23,7 @@ import butterknife.OnClick;
  * 修改时间：2016/11/14 上午11:50
  **/
 public class HomeFragment extends BaseFragment<HomePresenterImp> implements HomeContract.View{
-    @Bind(R.id.btn_home)
+    @BindView(R.id.btn_home)
     Button btnHome;
     SVProgressHUD svProgressHUD;
 
@@ -52,7 +49,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
     @OnClick(R.id.btn_home)
     public void home()
     {
-         mPresenter.message("这是首页消息");
+          mPresenter.columnDetail();
 
     }
     @Override

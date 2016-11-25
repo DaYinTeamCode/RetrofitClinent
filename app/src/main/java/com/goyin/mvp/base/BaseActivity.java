@@ -1,16 +1,15 @@
 package com.goyin.mvp.base;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.goyin.mvp.model.ContractProxy;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static butterknife.ButterKnife.bind;
 
 /**
  *  作者：gaoyin
@@ -26,10 +25,11 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
  *  备注消息：
  *  修改时间：2016/11/8 下午3:46
  **/
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BaseView<T> {
+public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatActivity implements BaseView<T> {
 
 //    定义Presenter
     protected  T mPresenter;
+    protected Unbinder unbinder;
 
 //    获取布局资源文件
     protected  abstract  int getLayoutId();
@@ -55,7 +55,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
 //            设置布局资源文件
              setContentView(getLayoutId());
 //            注解绑定
-            ButterKnife.bind(this);
+            unbinder=  ButterKnife.bind(this);
             bindPresenter();
             onInitView(savedInstanceState);
             onEvent();
@@ -92,7 +92,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         if(mPresenter!=null)
         {
             ContractProxy.getInstance().unbind(getContractClazz(),this);

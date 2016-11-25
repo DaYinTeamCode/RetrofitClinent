@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.neenbedankt.android-apt'//增加这一句
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -18,9 +18,13 @@ android {
         }
     }
 }
+repositories {
+    maven { url = 'https://dl.bintray.com/yuancloud/maven/' }
+    mavenCentral();
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -28,11 +32,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     //  全新适配方案
     compile 'com.zhy:autolayout:1.4.5'
-//       注解
-    compile 'com.jakewharton:butterknife:7.0.1'
-
+    //黄油刀
+    compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
     compile 'com.github.GaoYin2016:Android-SVProgressHUD:1.0'
-//    侧滑返回
+    //    侧滑返回
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
-
+    compile project(':retrofitutils')
 }

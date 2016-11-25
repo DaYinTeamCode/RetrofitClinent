@@ -10,7 +10,7 @@
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
     android:background="@drawable/btn_ok"
-    android:text="首页"
+    android:text="斗鱼TV"
     android:textColor="@color/background"
     android:textSize="30px"
     />

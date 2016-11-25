@@ -19,7 +19,6 @@ public interface HomeContract {
 
       interface View extends CommonView{
 
-
       }
       interface Presenter extends CommonPresenter{
 
@@ -27,6 +26,8 @@ public interface HomeContract {
            *  提示消息
            */
           void message(String msg);
+
+          void columnDetail();
 
 
       }

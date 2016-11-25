@@ -4,12 +4,9 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.goyin.mvp.base.BasePresenter;
-import com.goyin.mvp.base.BaseView;
 import com.goyin.mvp.presenter.login.interfaces.LoginContract;
 import com.goyin.mvp.view.common.activity.MainActivity;
 import com.goyin.mvp.view.login.LoginActivity;
-
-import static android.R.attr.bitmap;
 
 /**
  *  作者：gaoyin
@@ -74,8 +71,6 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
         }
 
           mView.showWithProgress("加载中...");
-
-
         new Thread(new Runnable() {
             @Override
             public void run() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mvpdemo</string>
+    <string name="app_name">斗鱼TV</string>
     <string name="telHint">输入手机号</string>
     <string name="pwdHint">输入密码</string>
     <string name="login">登录</string>

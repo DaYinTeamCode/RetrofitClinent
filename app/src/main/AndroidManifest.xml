@@ -3,8 +3,9 @@
     package="com.gaoyin.mvp">
 
     <application
+        android:name="com.goyin.mvp.application.ShopAppLication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">

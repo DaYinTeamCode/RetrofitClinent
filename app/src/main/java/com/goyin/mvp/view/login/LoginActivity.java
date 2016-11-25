@@ -10,15 +10,14 @@ import android.widget.TextView;
 
 import com.bigkoo.svprogresshud.SVProgressHUD;
 import com.gaoyin.mvp.R;
-import com.goyin.mvp.base.BaseActivity;
 import com.goyin.mvp.base.SwipeBackActivity;
-import com.goyin.mvp.model.annotation.Implement;
 import com.goyin.mvp.presenter.login.impl.LoginPresenterImp;
 import com.goyin.mvp.presenter.login.interfaces.LoginContract;
 import com.zhy.autolayout.AutoLinearLayout;
 import com.zhy.autolayout.AutoRelativeLayout;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
@@ -35,38 +34,40 @@ import butterknife.OnClick;
 public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implements LoginContract.View {
 
     public Context context;
-    @Bind(R.id.qq)
-    ImageView qq;
-    @Bind(R.id.wb)
-    ImageView wb;
-    @Bind(R.id.wx)
-    ImageView wx;
-    @Bind(R.id.img_signed)
-    ImageView imgSigned;
-    @Bind(R.id.tv_title)
-    TextView tvTitle;
-    @Bind(R.id.tv_ok)
-    TextView tvOk;
-    @Bind(R.id.img_msg)
-    ImageView imgMsg;
-    @Bind(R.id.et_loginTel)
-    EditText etLoginTel;
-    @Bind(R.id.et_loginPwd)
-    EditText etLoginPwd;
-    @Bind(R.id.btn_login)
-    Button btnLogin;
-    @Bind(R.id.tv_regist)
-    TextView tvRegist;
-    @Bind(R.id.tv_forgetPwd)
-    TextView tvForgetPwd;
-    @Bind(R.id.top)
-    AutoLinearLayout top;
-    @Bind(R.id.activity_login)
-    AutoRelativeLayout activityLogin;
+
 
     SVProgressHUD svProgressHUD;
 
     String tel, pwd;
+    @BindView(R.id.qq)
+    ImageView qq;
+    @BindView(R.id.wb)
+    ImageView wb;
+    @BindView(R.id.wx)
+    ImageView wx;
+    @BindView(R.id.img_signed)
+    ImageView imgSigned;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
+    @BindView(R.id.tv_ok)
+    TextView tvOk;
+    @BindView(R.id.img_msg)
+    ImageView imgMsg;
+    @BindView(R.id.et_loginTel)
+    EditText etLoginTel;
+    @BindView(R.id.et_loginPwd)
+    EditText etLoginPwd;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
+    @BindView(R.id.tv_regist)
+    TextView tvRegist;
+    @BindView(R.id.tv_forgetPwd)
+    TextView tvForgetPwd;
+    @BindView(R.id.top)
+    AutoLinearLayout top;
+    @BindView(R.id.activity_login)
+    AutoRelativeLayout activityLogin;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -76,34 +77,34 @@ public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implemen
     protected void onInitView(Bundle bundle) {
         tvTitle.setText(getResources().getString(R.string.login));
         svProgressHUD = new SVProgressHUD(this);
-        context=this;
+        context = this;
 
     }
+
     @Override
     protected void onEvent() {
 
 
     }
-//登录
+
+    //登录
     @OnClick(R.id.btn_login)
-    public void login()
-    {
+    public void login() {
         tel = etLoginTel.getText().toString();
         pwd = etLoginPwd.getText().toString();
         mPresenter.login(tel, pwd);
     }
-//    注册
+
+    //    注册
     @OnClick(R.id.tv_regist)
-    public void regist()
-    {
+    public void regist() {
         mPresenter.regist();
     }
 
     //   忘记密码
     @OnClick(R.id.tv_forgetPwd)
-    public void forgetPwd()
-    {
-       mPresenter.forgetPwd();
+    public void forgetPwd() {
+        mPresenter.forgetPwd();
     }
 
     @Override
@@ -124,12 +125,12 @@ public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implemen
 
     @Override
     public void showsInfoWithStatus(String msg) {
-       svProgressHUD.showInfoWithStatus(msg);
+        svProgressHUD.showInfoWithStatus(msg);
     }
 
     @Override
     public void showWithProgress(String msg) {
-         svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.BlackCancel);
+        svProgressHUD.showWithStatus(msg, SVProgressHUD.SVProgressHUDMaskType.BlackCancel);
     }
 
     @Override
@@ -137,13 +138,20 @@ public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implemen
         svProgressHUD.dismiss();
 
     }
+
     @Override
     public void startAct(Class<?> cls, boolean finish) {
         Intent intent = new Intent(context, cls);
         startActivity(intent);
-        if(finish)
-        {
+        if (finish) {
             finish();
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

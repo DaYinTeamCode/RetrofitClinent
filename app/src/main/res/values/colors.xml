@@ -14,4 +14,9 @@
     <color name="btn_ok_pressed">#ff4248</color>
     <color name="btn_ok_unpressed">#99ff4248</color>
     <color name="ingestAcount">#343434</color>
+    <!--主界面-->
+    <color name="tab_text_normal">#212121</color>
+    <!--TabBar 字体颜色-->
+    <color name="comui_tab_text_color">#929292</color>
+    <color name="comui_tab_select_color">#FD9835</color>
 </resources>

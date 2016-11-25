@@ -15,6 +15,7 @@ import com.goyin.mvp.model.ContractProxy;
 import java.util.List;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
 public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCompatActivity implements BaseView<T> {
@@ -24,6 +25,7 @@ public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCom
 
     //    定义Presenter
     protected  T mPresenter;
+    protected Unbinder unbinder;
 
     //    获取布局资源文件
     protected  abstract  int getLayoutId();
@@ -53,7 +55,7 @@ public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCom
 //            设置布局资源文件
             setContentView(getLayoutId());
 //            注解绑定
-            ButterKnife.bind(this);
+            unbinder=  ButterKnife.bind(this);
             bindPresenter();
             onInitView(savedInstanceState);
             onEvent();
@@ -89,7 +91,9 @@ public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCom
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
         if(mPresenter!=null)
         {
             ContractProxy.getInstance().unbind(getContractClazz(),this);
