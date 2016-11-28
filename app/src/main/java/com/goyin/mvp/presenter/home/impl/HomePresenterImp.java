@@ -3,12 +3,14 @@ package com.goyin.mvp.presenter.home.impl;
 import com.goyin.mvp.api.DouYuApi;
 import com.goyin.mvp.base.BasePresenter;
 import com.goyin.mvp.model.home.ColumnDetail;
+import com.goyin.mvp.model.live.LiveList;
 import com.goyin.mvp.presenter.home.interfaces.HomeContract;
 import com.goyin.mvp.utils.ParamsMapUtils;
 import com.goyin.mvp.view.common.fragment.HomeFragment;
 import com.zhuoke.team.net.callback.RxSubscriber;
-import com.zhuoke.team.net.exception.ExceptionHandle;
+import com.zhuoke.team.net.exception.ResponeThrowable;
 import com.zhuoke.team.net.http.HttpUtils;
+import com.zhuoke.team.net.transformer.DefaultTransformer;
 import com.zhuoke.team.utils.L;
 import com.zhuoke.team.utils.RxUtils;
 
@@ -39,11 +41,11 @@ public class HomePresenterImp extends BasePresenter<HomeFragment> implements Hom
                 .builder(DouYuApi.class)
                 .getColumnDetail(ParamsMapUtils.getColumnDatail("game"))
 //               进行预处理
-                .compose(RxUtils.<List<ColumnDetail>>transformer())
+                .compose(new DefaultTransformer<List<ColumnDetail>>())
 //               绑定当前activity或者fragment 与Observable 的生命周期
                 .compose(mView.<List<ColumnDetail>>bindToLifecycle())
 //               线程进行切换
-                .compose(RxUtils.<List<ColumnDetail>>rxSchedulerHelper())
+//                .compose(RxUtils.<List<ColumnDetail>>rxSchedulerHelper())
                 .subscribe(new RxSubscriber<List<ColumnDetail>>() {
                    @Override
                    public void onSuccess(List<ColumnDetail> columnDetails) {
@@ -51,11 +53,13 @@ public class HomePresenterImp extends BasePresenter<HomeFragment> implements Hom
                         L.e("数据为:" + columnDetails.toString());
                    }
                    @Override
-                   public void onError(ExceptionHandle.ResponeThrowable e) {
+                   public void onError(ResponeThrowable e) {
                         L.DEBUG = true;
                         L.e("错误信息:" + e.message);
                    }
                });
+
+
     }
 
 

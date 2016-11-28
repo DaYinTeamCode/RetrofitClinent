@@ -97,6 +97,7 @@ public class HttpUtils {
                     .cache(configuration.getDiskCache())
                     .connectTimeout(configuration.getConnectTimeOut(), TimeUnit.SECONDS)
                     .connectionPool(configuration.getConnectionPool())
+                    .retryOnConnectionFailure(true)
                     .build();
         }
         else
@@ -105,6 +106,7 @@ public class HttpUtils {
                     .addInterceptor(new LogInterceptor())
                     .connectTimeout(configuration.getConnectTimeOut(), TimeUnit.SECONDS)
                     .connectionPool(configuration.getConnectionPool())
+                    .retryOnConnectionFailure(true)
                     .build();
 
         }

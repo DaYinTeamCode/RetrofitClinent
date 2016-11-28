@@ -3,10 +3,18 @@ package com.goyin.mvp.presenter.login.impl;
 import android.os.Handler;
 import android.os.Message;
 
+import com.goyin.mvp.api.DouYuApi;
 import com.goyin.mvp.base.BasePresenter;
+import com.goyin.mvp.model.login.UserInfo;
 import com.goyin.mvp.presenter.login.interfaces.LoginContract;
+import com.goyin.mvp.utils.ParamsMapUtils;
 import com.goyin.mvp.view.common.activity.MainActivity;
 import com.goyin.mvp.view.login.LoginActivity;
+import com.zhuoke.team.net.callback.RxSubscriber;
+import com.zhuoke.team.net.exception.ResponeThrowable;
+import com.zhuoke.team.net.http.HttpUtils;
+import com.zhuoke.team.net.transformer.DefaultTransformer;
+import com.zhuoke.team.utils.L;
 
 /**
  *  作者：gaoyin
@@ -33,14 +41,13 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
                 case LOGIN_SUCCUSS:
                     if(mView!=null) {
                         mView.dismiss();
-                        mView.showSuccessWithStatus("登录成功");
-                        mView.startAct(MainActivity.class, true);
+
                     }
                     break;
                 case LOGIN_FAIL:
                     if(mView!=null) {
                         mView.dismiss();
-                        mView.showErrorWithStatus("登录失败!");
+
                     }
                     break;
             }
@@ -71,27 +78,30 @@ public class LoginPresenterImp extends BasePresenter<LoginActivity> implements L
         }
 
           mView.showWithProgress("加载中...");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Message message=Message.obtain();
-                if(tel.toLowerCase().endsWith("123")&&pwd.endsWith("123"))
-                {
-                    message.what=LOGIN_SUCCUSS;
-                    mHandler.sendMessage(message);
-                }
-                else
-                {
-                    message.what=LOGIN_FAIL;
-                    mHandler.sendMessage(message);
-                }
-            }
-        }).start();
+        HttpUtils.getInstance(mView.getApplicationContext())
+                .setLoadDiskCache(false)
+                .getRetofitClinet()
+                .builder(DouYuApi.class)
+                .getLogin(ParamsMapUtils.getlogin(tel,pwd))
+                .compose(new DefaultTransformer<UserInfo>())
+                .compose(mView.<UserInfo>bindToLifecycle())
+                .subscribe(new RxSubscriber<UserInfo>() {
+                    @Override
+                    public void onSuccess(UserInfo userInfos) {
+                        L.DEBUG = true;
+                        L.e("数据为:" + userInfos.toString());
+                        mView.showSuccessWithStatus("登录成功");
+                        mView.startAct(MainActivity.class, true);
+
+                    }
+                    @Override
+                    public void onError(ResponeThrowable e) {
+                        super.onError(e);
+                        mView.showErrorWithStatus("登录失败!");
+                        L.DEBUG = true;
+                        L.e("错误信息:" + e.message);
+                    }
+                });
     }
     @Override
     public void regist() {

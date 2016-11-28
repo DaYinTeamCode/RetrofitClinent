@@ -4,8 +4,6 @@ import com.zhuoke.team.utils.BaseParamsMapUtil;
 
 import java.util.Map;
 
-import static android.R.attr.name;
-
 /**
  * 作者：${User}
  * 电话：18810474975
@@ -51,5 +49,19 @@ public class ParamsMapUtils  extends BaseParamsMapUtil{
         mapparam.put("limit", limit);
         return mapparam;
     }
+
+    /**
+     *   登录
+     * @param username
+     * @param password
+     * @return
+     */
+    public static Map<String, String> getlogin(String username,String password) {
+        mapparam = getDefaultParams();
+        mapparam.put("username", username);
+        mapparam.put("password", password);
+        return mapparam;
+    }
+
 
 }

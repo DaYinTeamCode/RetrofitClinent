@@ -10,8 +10,6 @@ package com.goyin.mvp.model.home;
  *  修改时间：2016/11/24 下午2:34
  **/
 public class ColumnDetail {
-
-
     /**
      * tag_id : 1
      * short_name : LOL

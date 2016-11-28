@@ -93,6 +93,7 @@ public class LoginActivity extends SwipeBackActivity<LoginPresenterImp> implemen
         tel = etLoginTel.getText().toString();
         pwd = etLoginPwd.getText().toString();
         mPresenter.login(tel, pwd);
+
     }
 
     //    注册

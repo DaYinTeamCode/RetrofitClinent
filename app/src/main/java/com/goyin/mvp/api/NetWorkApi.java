@@ -19,4 +19,6 @@ public class NetWorkApi {
 
     //     全部直播
     public  static final   String  getAllLive= "/api/v1/live";
+//       登录
+    public static final String getLogin="/api/v1/login";
 }

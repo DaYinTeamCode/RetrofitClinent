@@ -1,5 +1,7 @@
 package com.zhuoke.team.net.response;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  *  作者：gaoyin
  *  电话：18810474975
@@ -17,6 +19,7 @@ public class HttpResponse<T> {
     /**
      *   java Bean
      */
+    @SerializedName(value = "data", alternate = {"subjects"})
     private  T data;
 
     public int getError() {

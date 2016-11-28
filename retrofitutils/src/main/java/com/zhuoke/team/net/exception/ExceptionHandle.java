@@ -117,47 +117,5 @@ public class ExceptionHandle {
         public static final int TIMEOUT_ERROR = 1006;
 
     }
-
-    public static class ResponeThrowable extends Exception {
-        public int code;
-        public String message;
-
-        public ResponeThrowable(Throwable throwable, int code) {
-            super(throwable);
-            this.code = code;
-        }
-
-        public ResponeThrowable(String message, int code) {
-            this.message=message;
-            this.code = code;
-        }
-        @Override
-        public String toString() {
-            return "ResponeThrowable{" +
-                    "code=" + code +
-                    ", message='" + message + '\'' +
-                    '}';
-        }
-    }
-
-    /**
-     *  服务端异常
-     */
-    public class ServerException extends RuntimeException {
-        public int code;
-        public String message;
-
-        public ServerException(String message, int code) {
-            this.message=message;
-            this.code = code;
-        }
-        @Override
-        public String toString() {
-            return "ServerException{" +
-                    "code=" + code +
-                    ", message='" + message + '\'' +
-                    '}';
-        }
-    }
 }
 

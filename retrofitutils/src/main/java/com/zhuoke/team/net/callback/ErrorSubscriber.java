@@ -1,6 +1,7 @@
 package com.zhuoke.team.net.callback;
 
 import com.zhuoke.team.net.exception.ExceptionHandle;
+import com.zhuoke.team.net.exception.ResponeThrowable;
 
 import rx.Subscriber;
 
@@ -16,15 +17,15 @@ import rx.Subscriber;
 public abstract class ErrorSubscriber<T> extends Subscriber<T> {
     @Override
     public void onError(Throwable e) {
-        if(e instanceof ExceptionHandle.ResponeThrowable){
-            onError((ExceptionHandle.ResponeThrowable)e);
+        if(e instanceof ResponeThrowable){
+            onError((ResponeThrowable)e);
         }else{
-            onError(new ExceptionHandle.ResponeThrowable(e,1000));
+            onError(new ResponeThrowable(e,1000));
         }
     }
     /**
      * 错误回调
      */
-    protected abstract void onError(ExceptionHandle.ResponeThrowable ex);
+    protected abstract void onError(ResponeThrowable ex);
 }
 

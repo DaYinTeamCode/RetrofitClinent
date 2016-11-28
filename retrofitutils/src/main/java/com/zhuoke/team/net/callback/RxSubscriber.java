@@ -1,6 +1,10 @@
 package com.zhuoke.team.net.callback;
 
+import android.util.Log;
+
 import com.zhuoke.team.net.exception.ExceptionHandle;
+import com.zhuoke.team.net.exception.ResponeThrowable;
+import com.zhuoke.team.net.transformer.ErrorTransformer;
 
 import rx.Subscriber;
 
@@ -13,25 +17,32 @@ import rx.Subscriber;
  *  备注消息：
  *  修改时间：2016/11/24 上午10:56
  **/
-public  abstract class RxSubscriber<T> extends Subscriber<T> {
+public  abstract class RxSubscriber<T> extends ErrorSubscriber<T> {
 
-    /**
-     *  请求网络错误
-     * @param e
-     */
+//    /**
+//     *  请求网络错误
+//     * @param e
+//     */
+//    @Override
+//    public void onError(Throwable e) {
+//        // todo error somthing
+//
+//        if(e instanceof ResponeThrowable){
+//            onError((ResponeThrowable)e);
+//        }
+//        else
+//        {
+////                 未知错误
+//             onError(new ResponeThrowable(e,1000));
+//        }
+//    }
+
+
     @Override
-    public void onError(Throwable e) {
-        // todo error somthing
-
-        if(e instanceof ExceptionHandle.ResponeThrowable){
-            onError((ExceptionHandle.ResponeThrowable)e);
-        }
-        else
-        {
-//                 未知错误
-             onError(new ExceptionHandle.ResponeThrowable(e,1000));
-        }
+    protected void onError(ResponeThrowable ex) {
+        Log.e("aaaaa", "onError: " + ex.message + "code: " + ex.code);
     }
+
     /**
      *  开始请求网络
      */
@@ -56,6 +67,5 @@ public  abstract class RxSubscriber<T> extends Subscriber<T> {
           onSuccess(t);
     }
     public abstract  void onSuccess(T t);
-    public abstract void onError(ExceptionHandle.ResponeThrowable e);
 
 }

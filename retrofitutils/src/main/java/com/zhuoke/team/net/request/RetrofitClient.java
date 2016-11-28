@@ -1,5 +1,7 @@
 package com.zhuoke.team.net.request;
 
+import com.google.gson.Gson;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -31,7 +33,7 @@ public class RetrofitClient {
     {
         this.baseUrl=baseUrl;
         this.mOkHttpClient=mOkHttpClient;
-//        this.gsonConverterFactory = GsonConverterFactory.create(new Gson());
+        this.gsonConverterFactory = GsonConverterFactory.create(new Gson());
     }
 
     private  BaseServiceApi serviceApi;
@@ -63,9 +65,9 @@ public class RetrofitClient {
         }
         retrofit=new Retrofit.Builder()
                 .client(mOkHttpClient)
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(baseUrl)
                 .build();
         return retrofit.create(service);
 

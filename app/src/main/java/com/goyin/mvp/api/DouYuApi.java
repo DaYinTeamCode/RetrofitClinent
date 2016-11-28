@@ -2,6 +2,7 @@ package com.goyin.mvp.api;
 
 import com.goyin.mvp.model.home.ColumnDetail;
 import com.goyin.mvp.model.live.LiveList;
+import com.goyin.mvp.model.login.UserInfo;
 import com.zhuoke.team.net.response.HttpResponse;
 
 import java.util.List;
@@ -27,4 +28,12 @@ public interface DouYuApi {
 
     @GET(NetWorkApi.getAllLive)
     Observable<HttpResponse<List<LiveList>>> getAllLive(@QueryMap Map<String, String> maps);
+
+    /**
+     *  登录
+     * @param maps
+     * @return
+     */
+    @GET(NetWorkApi.getLogin)
+    Observable<HttpResponse<UserInfo>> getLogin(@QueryMap Map<String, String> maps);
 }

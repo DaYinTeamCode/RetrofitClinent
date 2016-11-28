@@ -6,11 +6,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.goyin.mvp.model.ContractProxy;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 
-public abstract class SwipeBackActivity<T extends  BasePresenter> extends AppCompatActivity implements BaseView<T> {
+public abstract class SwipeBackActivity<T extends  BasePresenter> extends RxAppCompatActivity implements BaseView<T> {
 
 
     public SwipeBackLayout mSwipeBackLayout;
